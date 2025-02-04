@@ -5,11 +5,14 @@ import CardMedia from '@mui/material/CardMedia';
 import Button from '@mui/material/Button';
 import Typography from '@mui/material/Typography';
 import { Grid } from '@mui/material';
+import Uni from "../../img/pu.png"
+import Clg from "../../img/punjab college logo.svg"
+import School from "../../img/mgs.png"
 
 
 function Summary() {
   return (
-    <div>
+    <div style={{marginBottom:"80px"}}>
     <Typography
       variant="h4"
       sx={{
@@ -27,7 +30,7 @@ function Summary() {
         component="img"
         alt="green iguana"
         height="140"
-        image="../../img/pu.png"
+        image={Uni}
         sx={{objectFit: "contain",marginTop:"10px"}}
       />
       <CardContent>
@@ -54,7 +57,7 @@ University of Punjab
         component="img"
         alt="green iguana"
         height="140"
-        image="../../img/punjab college logo.svg"
+        image={Clg }
         sx={{objectFit: "contain",marginTop:"10px"}}
       />
       <CardContent>
@@ -81,7 +84,7 @@ University of Punjab
         component="img"
         alt="green iguana"
         height="140"
-        image="../../img/mgs.png"
+        image={School}
  sx={{objectFit: "contain",marginTop:"10px"}}
       />
       <CardContent>

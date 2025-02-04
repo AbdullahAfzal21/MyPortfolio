@@ -16,6 +16,8 @@ import Typography from '@mui/material/Typography';
 import { Avatar, Button, createTheme } from '@mui/material';
 import { ThemeProvider } from '@emotion/react';
 import { Outlet, useLocation } from 'react-router-dom';
+import Avatarimp from "../../img/1735124747507.jpg"
+import Logo from "../../img/logo.png"
 
 const drawerWidth = 240;
 const navItems = ['Home', 'Education', 'Skills', 'Experience', 'Projects', 'Contact'];
@@ -81,14 +83,14 @@ function DrawerAppBar({ window }) {
                 {!isHome && (
                   <Avatar
                     alt="Abdullah Afzal"
-                    src="../../img/1735124747507.jpg"
+                    src={Avatarimp}
                     sx={{ width: 40, height: 40, mr: 1 }}
                   />
                 )}
                 {/* <Typography variant="h6" component="div" sx={{ fontSize: '1.2rem' }}>
                   Abdullah Afzal
                 </Typography> */}
-                <img src="../../img/logo.png" alt="Abdullah Afzal" width={"130px"}/>
+                <img src={Logo} alt="Abdullah Afzal" width={"130px"}/>
               </Box>
 
               {/* Sidebar Toggle Button */}
@@ -118,11 +120,11 @@ function DrawerAppBar({ window }) {
               {!isHome && (
                 <Avatar
                   alt="Abdullah Afzal"
-                  src="../../img/1735124747507.jpg"
+                  src={Avatarimp}
                   sx={{ width: 40, height: 40, mr: 1 }}
                 />
               )}
-                <img src="../../img/logo.png" alt="Abdullah Afzal" width={"155px"}/>
+                <img src={Logo} alt="Abdullah Afzal" width={"155px"}/>
               <Box sx={{ display: { xs: 'none', md: 'block' } }}>
                 {navItems.map((item) => (
                   <Button key={item} sx={{ color: '#fff' }}>

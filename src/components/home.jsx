@@ -6,6 +6,11 @@ import Skills from './skills';
 import Experience from './experience';
 // import Education from './education';
 import Footer from './footer';
+import Objective from './objective';
+import Projects from './projects';
+import Homebg from "../../img/coding-background.jpg"
+import Avatarpic from "../../img/1735124747507.jpg"
+
 
 const Home = () => {
   return (
@@ -17,7 +22,7 @@ const Home = () => {
           width: "100%",
         height: "600px",
           position: "relative",
-          backgroundImage: "url(../../img/coding-background.jpg)",
+          backgroundImage: `url(${Homebg})`,
           backgroundRepeat: "no-repeat",
           backgroundSize: "cover",
           display: "flex",
@@ -53,7 +58,7 @@ const Home = () => {
         >
           <Avatar
             alt="Abdullah Afzal"
-            src="../../img/1735124747507.jpg"
+            src={Avatarpic}
             sx={{ width: { xs: 120, sm: 150, md: 200 }, height: { xs: 120, sm: 150, md: 200 }, mb: 2 }}
           />
           <h1 style={{ fontSize: "1.5rem", margin: 0 }}>Mern Stack Developer</h1>
@@ -64,9 +69,10 @@ const Home = () => {
         </Box>
       </Box>
       <Education/>
+      <Skills />
       <Experience />
-        <Skills />
-
+      <Projects/>
+        <Objective/>
         <Footer/>
         </Box>
     </>
