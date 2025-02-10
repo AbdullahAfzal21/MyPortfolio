@@ -5,7 +5,7 @@ import Education from './education';
 import Skills from './skills';
 import Experience from './experience';
 // import Education from './education';
-import Footer from './footer';
+
 import Objective from './objective';
 import Projects from './projects';
 import Homebg from "../../img/coding-background.jpg"
@@ -73,7 +73,6 @@ const Home = () => {
       <Experience />
       <Projects/>
         <Objective/>
-        <Footer/>
         </Box>
     </>
   );

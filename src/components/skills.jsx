@@ -1,6 +1,7 @@
 import { Box, Typography, Grid } from "@mui/material";
 import CheckCircleIcon from "@mui/icons-material/CheckCircle";
 import Skillsbg from "../../img/Skills.jpg";
+import { useLocation } from "react-router-dom";
 
 const skills = [
   "Node.js",
@@ -22,37 +23,38 @@ const skills = [
 
 
 function Skills() {
+  const location = useLocation();
   return (
     <div>
-      <Box sx={{ display: "flex", flexDirection: "column", alignItems: "center", width: "100%" }}>
-        <Box
-          sx={{
-            width: "100%",
-           maxHeight: "900px",
-            position: "relative",
-            backgroundImage: `url(${Skillsbg})`,
-            backgroundRepeat: "no-repeat",
-            backgroundSize: "cover",
-            paddingBottom:"80px",
-            display: "flex",
-            justifyContent: "center",
-
-            "::before": {
-              content: '""',
-              position: "absolute",
-              top: 0,
-              left: 0,
-              width: "100%",
-              height: "100%",
-              backgroundColor: "black",
-              opacity: 0.7,
-            },
-          }}
-        >
+      <Box sx={{ display: "flex", flexDirection: "column", alignItems: "center", width: "100%" ,marginTop:location.pathname === "/skills"? `70px`: "none" }}>
+   <Box
+  sx={{
+    width: "100%",
+    maxHeight: "900px",
+    position: "relative",
+    backgroundImage: location.pathname !== "/skills" ? `url(${Skillsbg})` : "none",
+    backgroundColor: location.pathname === "/skills" ? "#FFFFFF" : "transparent",
+    backgroundRepeat: "no-repeat",
+    backgroundSize: "cover",
+    paddingBottom: "80px",
+    display: "flex",
+    justifyContent: "center",
+    "::before": location.pathname !== "/skills" && {
+      content: '""',
+      position: "absolute",
+      top: 0,
+      left: 0,
+      width: "100%",
+      height: "100%",
+      backgroundColor: "black",
+      opacity: 0.7,
+    },
+  }}
+>
           <Box
             sx={{
               position: "relative",
-              color: "white",
+              color:  location.pathname === "/skills"? `black`: "white",
               zIndex: 1,
               textAlign: "center",
               width: { xs: "90%", sm: "100%", md: "75%" },
@@ -69,6 +71,7 @@ function Skills() {
                 textAlign: "center",
                 fontSize: "42px",
                 py: "70px",
+                fontWeight: "bold",
               }}
             >
               Skills

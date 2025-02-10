@@ -1,134 +1,218 @@
 import { Box, Typography, Grid, Card, Button, CardActions, CardContent, CardMedia } from "@mui/material";
 
-import Uni from "../../img/pu.png"
-import Clg from "../../img/punjab college logo.svg"
-import School from "../../img/mgs.png"
+// Import Images
+import Speedo from "../../img/speedo.jpg";
+import SocialApp from "../../img/social app.jpg";
+import Livep from "../../img/livep.jpg";
+
 import Projectbg from "../../img/web-project.jpg";
-
-
+import { useLocation } from "react-router-dom";
 
 function Project() {
+  const location = useLocation();
   return (
-    <div>
-      <Box sx={{ display: "flex", flexDirection: "column", alignItems: "center", width: "100%" }}>
+    <Box sx={{ display: "flex", flexDirection: "column", alignItems: "center", width: "100%",  marginTop:location.pathname === "/projects"? `60px`: "none"}}>
+      {/* Background Section */}
+      <Box
+        sx={{
+          width: "100%",
+          position: "relative",
+    backgroundImage: location.pathname !== "/projects" ? `url(${Projectbg})` : "none",
+    backgroundColor: location.pathname === "/projects" ? "#FFFFFF" : "transparent",
+          backgroundRepeat: "no-repeat",
+          backgroundSize: "cover",
+          paddingBottom: "80px",
+          display: "flex",
+          justifyContent: "center",
+          "::before":location.pathname !== "/projects" && {
+            content: '""',
+            position: "absolute",
+            top: 0,
+            left: 0,
+            width: "100%",
+            height: "100%",
+            backgroundColor: "black",
+            opacity: 0.7,
+          },
+        }}
+      >
         <Box
           sx={{
-            width: "100%",
-           maxHeight: "900px",
             position: "relative",
-            backgroundImage: `url(${Projectbg})`,
-            backgroundRepeat: "no-repeat",
-            backgroundSize: "cover",
-            paddingBottom:"80px",
+            color:  location.pathname === "/projects"? `black`: "white",
+            zIndex: 1,
+            textAlign: "center",
+            width: { xs: "90%", sm: "100%", md: "75%" },
+            borderRadius: "10px",
             display: "flex",
-            justifyContent: "center",
-
-            "::before": {
-              content: '""',
-              position: "absolute",
-              top: 0,
-              left: 0,
-              width: "100%",
-              height: "100%",
-              backgroundColor: "black",
-              opacity: 0.7,
-            },
+            flexDirection: "column",
+            alignItems: "center",
           }}
         >
-          <Box
+          <Typography
+            variant="h4"
             sx={{
-              position: "relative",
-              color: "white",
-              zIndex: 1,
+              textShadow: "3px 3px 5px rgba(0,0,0,0.4)",
               textAlign: "center",
-              width: { xs: "90%", sm: "100%", md: "75%" },
-              borderRadius: "10px",
-              display: "flex",
-              flexDirection: "column",
-              alignItems: "center",
+              fontSize: "42px",
+              py: "70px",
+              fontWeight: "bold",
             }}
           >
-            <Typography
-              variant="h4"
-              sx={{
-                textShadow: "3px 3px 5px rgba(0,0,0,0.4)",
-                textAlign: "center",
-                fontSize: "42px",
-                py: "70px",
-              }}
-            >
-  Project
-            </Typography>
+            Projects
+          </Typography>
 
-            <Grid container spacing={10} sx={{display: "flex", justifyContent: "center", alignItems: "center" }}>
-        <Grid item xs={12} sm={3}>
-        <Card
-  color="neutral"
-  orientation="vertical"
-  size="lg"
-/>
-        </Grid >
-        <Grid item xs={12} sm={3}>
-        <Card sx={{ maxWidth: "100%"}}>
-        <CardMedia
-        component="img"
-        alt="green iguana"
-        height="140"
-        image={Clg }
-        sx={{objectFit: "contain",marginTop:"10px"}}
-      />
-      <CardContent>
+          {/* Grid Section */}
+          <Grid container spacing={4} sx={{ display: "flex", justifyContent: "center" }}>
+            <Grid item xs={12} sm={6} md={4}>
+  <Card
+    sx={{
+      width: "320px",
+      borderRadius: "12px",
+      boxShadow: "0px 4px 12px rgba(0, 0, 0, 0.2)",
+      transition: "transform 0.3s ease-in-out",
+      "&:hover": { transform: "scale(1.05)" },
+      overflow: "hidden", 
+    }}
+  >
+    <CardMedia
+      component="img"
+      alt="Punjab College"
+      height="160"
+      image={Speedo}
+      sx={{
+        objectFit: "cover", 
+        marginTop: "0px", 
+        borderRadius: "12px 12px 0 0",
+      }}
+    />
+    <CardContent>
       <Typography gutterBottom variant="h6" component="div">
-        Punjab Group of Colleges 
-        </Typography>
-        <Typography gutterBottom variant="h7" component="div">
-    ICS,Stats
-  </Typography>
-        <Typography variant="body2" sx={{ color: 'text.secondary' }}>
-          Lizards are a widespread group of squamate reptiles, with over 6,000
-          species, ranging across all continents except Antarctica
-        </Typography>
-      </CardContent>
-      <CardActions>
-        <Button size="small">Share</Button>
-        <Button size="small">Learn More</Button>
-      </CardActions>
-    </Card>
-        </Grid>
-        <Grid item xs={12} sm={3}>
-        <Card sx={{ maxWidth: "100%" }}>
-        <CardMedia
-        component="img"
-        alt="green iguana"
-        height="140"
-        image={School}
- sx={{objectFit: "contain",marginTop:"10px"}}
-      />
-      <CardContent>
-      <Typography  variant="h6" component="div">
-Mumtaz Grammer School
-  </Typography>
-  <Typography gutterBottom variant="h7" component="div">
-Matric with Computer Science
-  </Typography>
-        <Typography variant="body2" sx={{ color: 'text.secondary' }}>
-          Lizards are a widespread group of squamate reptiles, with over 6,000
-          species, ranging across all continents except Antarctica
-        </Typography>
-      </CardContent>
-      <CardActions>
-        <Button size="small">Share</Button>
-        <Button size="small">Learn More</Button>
-      </CardActions>
-    </Card>
-        </Grid>
-      </Grid>
-           
-     
-          </Box>
+      Speedo Bus Route System
+      </Typography>
+      <Typography gutterBottom variant="body2" >
+      HTML,CSS,DOM,JavaScript
+      </Typography>
+      <Typography variant="body2" sx={{ color: "text.secondary",textAlign:"left" }}>
+  Worked on a project where users can input their <span style={{ fontWeight: 'bold' }}>desired stops</span> to receive accurate <span style={{ fontWeight: 'bold' }}>bus numbers</span> and <span style={{ fontWeight: 'bold' }}>routes</span> for Speedo buses. This project enhanced my problem-solving and backend development skills.
+</Typography>
+
+
+    </CardContent>
+    <CardActions>
+    <Typography variant="body2" sx={{ color: "text.secondary" }}>
+    Sep 2024 – Sep 2024
+</Typography>
+
+      <Button size="small">Learn More</Button>
+    </CardActions>
+  </Card>
+</Grid>
+
+<Grid item xs={12} sm={6} md={4}>
+  <Card
+    sx={{
+      width: "320px",
+      borderRadius: "12px",
+      boxShadow: "0px 4px 12px rgba(0, 0, 0, 0.2)",
+      transition: "transform 0.3s ease-in-out",
+      "&:hover": { transform: "scale(1.05)" },
+      overflow: "hidden", 
+    }}
+  >
+    <CardMedia
+      component="img"
+      alt="Punjab College"
+      height="160"
+      image={SocialApp}
+      sx={{
+        objectFit: "cover", 
+        marginTop: "0px", 
+        borderRadius: "12px 12px 0 0",
+      }}
+    />
+    <CardContent>
+      <Typography gutterBottom variant="h6" component="div" >
+      Social App
+      </Typography>
+      <Typography gutterBottom variant="body2" >
+      MongoDB,Express,React,Node,JavaScript
+      </Typography>
+      <Typography variant="body2" sx={{ color: "text.secondary",textAlign:"left" }}>
+  Developed a <span style={{ fontWeight: 'bold' }}>MERN-stack social media app</span> with features like 
+  <span style={{ fontWeight: 'bold' }}>sign-up</span>, 
+  <span style={{ fontWeight: 'bold' }}>login</span>, 
+  <span style={{ fontWeight: 'bold' }}>profile management</span>, 
+  <span style={{ fontWeight: 'bold' }}>post creation</span>, and <span style={{ fontWeight: 'bold' }}>liking</span>  
+   and <span style={{ fontWeight: 'bold' }}>interactions</span>.
+  This project enhanced my backendand full-stack development skills
+</Typography>
+
+
+    </CardContent>
+    <CardActions>
+    <Typography variant="body2" sx={{ color: "text.secondary" }}>
+    Nov 2024 – Nov 2024
+</Typography>
+
+      <Button size="small">Learn More</Button>
+    </CardActions>
+  </Card>
+</Grid>
+
+            {/* Mumtaz Grammar School Card */}
+            <Grid item xs={12} sm={6} md={4}>
+  <Card
+    sx={{
+      width: "320px",
+      borderRadius: "12px",
+      boxShadow: "0px 4px 12px rgba(0, 0, 0, 0.2)",
+      transition: "transform 0.3s ease-in-out",
+      "&:hover": { transform: "scale(1.05)" },
+      overflow: "hidden", 
+    }}
+  >
+    <CardMedia
+      component="img"
+      alt="Punjab College"
+      height="160"
+      image={Livep}
+      sx={{
+        objectFit: "cover", 
+        marginTop: "0px", 
+        borderRadius: "12px 12px 0 0",
+      }}
+    />
+    <CardContent>
+      <Typography gutterBottom variant="h6" component="div">
+      HRM Attendance Module
+
+      </Typography>
+      <Typography gutterBottom variant="body2" >
+      MUI,Javacscript,Node,MongoDB,React
+      </Typography>
+      <Typography variant="body2" sx={{ color: "text.secondary" ,textAlign:"left"}}>
+  Worked on the <span style={{ fontWeight: 'bold' }}>HRM Attendance module</span>, implementing features like 
+  <span style={{ fontWeight: 'bold' }}> file uploads</span>, 
+  <span style={{ fontWeight: 'bold' }}> date filters</span>, and 
+  <span style={{ fontWeight: 'bold' }}> record filters</span>.
+  Developed <span style={{ fontWeight: 'bold' }}>graphs</span> for visualizing attendance data and improving user experience.
+</Typography>
+
+    </CardContent>
+    <CardActions>
+    <Typography variant="body2" sx={{ color: "text.secondary" }}>
+    Dec 2024 – Jan 2025
+</Typography>
+
+      <Button size="small">Learn More</Button>
+    </CardActions>
+  </Card>
+</Grid>
+          </Grid>
         </Box>
       </Box>
-    </div>
+    </Box>
   );
 }
 

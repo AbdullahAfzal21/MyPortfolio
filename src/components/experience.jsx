@@ -1,20 +1,22 @@
 import { Container, Grid, Typography, Box } from "@mui/material";
 import Seebiz from "../../img/seebiz.png";
+import { useLocation } from "react-router-dom";
 
 function Experience() {
+  const location = useLocation();
   return (
     <Box
       sx={{
         backgroundColor: "white",
         color: "black",
-        minHeight: "100vh",
         display: "flex",
         flexDirection: "column",
         alignItems: "center",
         justifyContent: "center",
+        marginTop:location.pathname === "/experience"? `50px`: "none",
         px: 3, 
         pt: {xs: 8, md: 0},
-        pb: {xs: 3, md: 0}
+        pb: {xs: 3, md: 6}
       }}
     >
       <Typography
@@ -24,10 +26,23 @@ function Experience() {
           textAlign: "center",
           fontSize: { xs: "36px", md: "40px" }, 
           mb: 10,
+          fontWeight: "bold",
         }}
       >
-        Experience
+
       </Typography>
+      <Typography
+            variant="h4"
+            sx={{
+              textShadow: "3px 3px 5px rgba(0,0,0,0.4)",
+              textAlign: "center",
+              fontSize: "42px",
+              mb: 10,
+              fontWeight: "bold",
+            }}
+          >
+        Experience
+          </Typography>
 
       <Container maxWidth="lg">
         <Grid container spacing={4} alignItems="center">

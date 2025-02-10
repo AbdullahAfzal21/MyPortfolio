@@ -3,58 +3,55 @@ import PropTypes from 'prop-types';
 import AppBar from '@mui/material/AppBar';
 import Box from '@mui/material/Box';
 import CssBaseline from '@mui/material/CssBaseline';
-import Divider from '@mui/material/Divider';
-import Drawer from '@mui/material/Drawer';
 import IconButton from '@mui/material/IconButton';
-import List from '@mui/material/List';
-import ListItem from '@mui/material/ListItem';
-import ListItemButton from '@mui/material/ListItemButton';
-import ListItemText from '@mui/material/ListItemText';
-import MenuIcon from '@mui/icons-material/Menu';
 import Toolbar from '@mui/material/Toolbar';
-import Typography from '@mui/material/Typography';
-import { Avatar, Button, createTheme } from '@mui/material';
-import { ThemeProvider } from '@emotion/react';
-import { Outlet, useLocation } from 'react-router-dom';
-import Avatarimp from "../../img/1735124747507.jpg"
-import Logo from "../../img/logo.png"
+import { Avatar, Button, Drawer, List, ListItem, ListItemButton, ListItemText } from '@mui/material';
+import MenuIcon from '@mui/icons-material/Menu';
+import { Link, Outlet, useLocation } from 'react-router-dom';
+import Avatarimp from "../../img/1735124747507.jpg";
+import Logo from "../../img/logo.png";
+import Footer from './footer';
 
-const drawerWidth = 240;
-const navItems = ['Home', 'Education', 'Skills', 'Experience', 'Projects', 'Contact'];
-
-function DrawerAppBar({ window }) {
+function DrawerAppBar() {
   const location = useLocation();
   const isHome = location.pathname === '/';
-  const [mobileOpen, setMobileOpen] = React.useState(false);
+  const [isScrolled, setIsScrolled] = React.useState(false);
+  const [mobileOpen, setMobileOpen] = React.useState(false); // ✅ Sidebar toggle state
+
+  React.useEffect(() => {
+    const handleScroll = () => {
+      setIsScrolled(window.scrollY > 50);
+    };
+
+    window.addEventListener("scroll", handleScroll);
+    return () => window.removeEventListener("scroll", handleScroll);
+  }, []);
 
   const handleDrawerToggle = () => {
-    setMobileOpen(!mobileOpen);
+    setMobileOpen(!mobileOpen); // ✅ Sidebar open/close toggle function
   };
 
-  const darkTheme = createTheme({
-    palette: {
-      mode: 'dark',
-      primary: {
-        main: '#1976d2',
-      },
-      background: {
-        default: isHome ? 'transparent' : '#121212',
-        paper: isHome ? 'transparent' : '#1E1E1E',
-      },
-    },
-  });
+  const navItems = [
+    { label: "Home", path: "/" },
+    { label: "Education", path: "/education" },
+    { label: "Skills", path: "/skills" },
+    { label: "Experience", path: "/experience" },
+    { label: "Projects", path: "/projects" },
+    { label: "Objectives", path: "/objective" }
+  ];
 
+  // ✅ Mobile Sidebar Component
   const drawer = (
-    <Box onClick={handleDrawerToggle} sx={{ textAlign: 'center' }}>
-      <Typography variant="h6" sx={{ my: 2 }}>
-        Sections
-      </Typography>
-      <Divider />
+    <Box
+      sx={{ width: 250, bgcolor: "#121212", height: "100vh", color: "#fff", paddingTop: 2 }}
+      role="presentation"
+      onClick={handleDrawerToggle}
+    >
       <List>
         {navItems.map((item) => (
-          <ListItem key={item} disablePadding>
-            <ListItemButton sx={{ textAlign: 'center' }}>
-              <ListItemText primary={item} />
+          <ListItem key={item.path} disablePadding>
+            <ListItemButton component={Link} to={item.path} selected={location.pathname === item.path}>
+              <ListItemText primary={item.label} sx={{ textAlign: "center" }} />
             </ListItemButton>
           </ListItem>
         ))}
@@ -62,101 +59,90 @@ function DrawerAppBar({ window }) {
     </Box>
   );
 
-  const container = window !== undefined ? () => window().document.body : undefined;
-
   return (
-    <Box sx={{ display: 'flex' }}>
+    <Box>
       <CssBaseline />
-      <ThemeProvider theme={darkTheme}>
-        <AppBar component="nav">
-          <Toolbar>
-            {/* Mobile Menu */}
-            <Box
-              sx={{
-                display: { xs: 'flex', sm: 'flex', md: 'none' },
-                alignItems: 'center',
-                justifyContent: 'space-between',
-                width: '100%',
-              }}
-            >
-              <Box sx={{ display: 'flex', alignItems: 'center' }}>
-                {!isHome && (
-                  <Avatar
-                    alt="Abdullah Afzal"
-                    src={Avatarimp}
-                    sx={{ width: 40, height: 40, mr: 1 }}
-                  />
-                )}
-                {/* <Typography variant="h6" component="div" sx={{ fontSize: '1.2rem' }}>
-                  Abdullah Afzal
-                </Typography> */}
-                <img src={Logo} alt="Abdullah Afzal" width={"130px"}/>
-              </Box>
-
-              {/* Sidebar Toggle Button */}
-              <IconButton color="inherit" aria-label="open drawer" onClick={handleDrawerToggle}>
-                <MenuIcon />
-              </IconButton>
-            </Box>
-
-            {/* Desktop Menu */}
-            <Box
-              sx={{
-                display: { xs: 'none', md: 'flex' },
-                alignItems: 'center',
-                justifyContent: 'space-between',
-                width: '100%',
-              }}
-            >
-              <IconButton
-                color="inherit"
-                aria-label="open drawer"
-                edge="start"
-                onClick={handleDrawerToggle}
-                sx={{ mr: 2, display: { md: 'none' } }}
-              >
-                <MenuIcon />
-              </IconButton>
+      <AppBar
+        component="nav"
+        sx={{
+          backgroundColor: isScrolled ? "#121212" : (isHome ? "transparent" : "#121212"),
+          transition: "background-color 0.3s ease-in-out",
+          boxShadow: isScrolled ? "0px 4px 10px rgba(0, 0, 0, 0.2)" : "none",
+        }}
+      >
+        <Toolbar>
+          {/* Mobile Menu */}
+          <Box
+            sx={{
+              display: { xs: 'flex', sm: 'flex', md: 'none' },
+              alignItems: 'center',
+              justifyContent: 'space-between',
+              width: '100%',
+            }}
+          >
+            <Box sx={{ display: 'flex', alignItems: 'center' }}>
               {!isHome && (
-                <Avatar
-                  alt="Abdullah Afzal"
-                  src={Avatarimp}
-                  sx={{ width: 40, height: 40, mr: 1 }}
-                />
+                <Avatar alt="Abdullah Afzal" src={Avatarimp} sx={{ width: 40, height: 40, mr: 1 }} />
               )}
-                <img src={Logo} alt="Abdullah Afzal" width={"155px"}/>
-              <Box sx={{ display: { xs: 'none', md: 'block' } }}>
-                {navItems.map((item) => (
-                  <Button key={item} sx={{ color: '#fff' }}>
-                    {item}
-                  </Button>
-                ))}
-              </Box>
+              <img src={Logo} alt="Abdullah Afzal" width={"130px"} />
             </Box>
-          </Toolbar>
-        </AppBar>
-      </ThemeProvider>
 
-      {/* Sidebar Drawer */}
-      <nav>
-        <Drawer
-          container={container}
-          variant="temporary"
-          open={mobileOpen}
-          onClose={handleDrawerToggle}
-          ModalProps={{
-            keepMounted: true,
-          }}
-          sx={{
-            display: { xs: 'block', sm: 'block', md: 'none' },
-            '& .MuiDrawer-paper': { boxSizing: 'border-box', width: drawerWidth },
-          }}
-        >
-          {drawer}
-        </Drawer>
-      </nav>
+            {/* Sidebar Toggle Button */}
+            <IconButton color="inherit" aria-label="open drawer" onClick={handleDrawerToggle}>
+              <MenuIcon />
+            </IconButton>
+          </Box>
+
+          {/* Desktop Menu */}
+          <Box
+            sx={{
+              display: { xs: 'none', md: 'flex' },
+              alignItems: 'center',
+              justifyContent: 'space-between',
+              width: '100%',
+            }}
+          >
+            <Box sx={{ display: "flex", alignItems: 'center', justifyContent: 'space-between' }}>
+              {!isHome && (
+                <Avatar alt="Abdullah Afzal" src={Avatarimp} sx={{ width: 40, height: 40, mr: 1 }} />
+              )}
+              <img src={Logo} alt="Abdullah Afzal" width={"155px"} />
+            </Box>
+            <Box sx={{ display: { xs: 'none', md: 'block' } }}>
+              {navItems.map((item) => (
+                <Button
+                  key={item.path}
+                  component={Link}
+                  to={item.path}
+                  sx={{
+                    color: '#fff',
+                    textTransform: "none",
+                    borderBottom: location.pathname === item.path && location.pathname !== "/" ? "2px solid white" : "none",
+                    borderRadius: 0,
+                  }}
+                >
+                  {item.label}
+                </Button>
+              ))}
+            </Box>
+          </Box>
+        </Toolbar>
+      </AppBar>
+
+      {/* ✅ Mobile Sidebar Drawer */}
+      <Drawer
+        anchor="right"
+        open={mobileOpen}
+        onClose={handleDrawerToggle}
+        sx={{
+          '& .MuiDrawer-paper': { boxSizing: 'border-box', width: 250 },
+        }}
+      >
+        {drawer}
+      </Drawer>
 
       <Outlet />
+      <Footer />
     </Box>
   );
 }
