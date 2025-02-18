@@ -52,8 +52,8 @@ function Experience() {
               src={Seebiz}
               alt="Seebiz logo"
               sx={{
-                width: { xs: "130px", sm: "150px", md: "200px" },
-                height: { xs: "130px", sm: "150px", md: "200px" },
+                width: { xs: "150px", sm: "150px", md: "200px" },
+                height: { xs: "150px", sm: "150px", md: "200px" },
                 borderRadius: "50%",
                 boxShadow: 3,
               }}
@@ -79,7 +79,7 @@ function Experience() {
               </Box>
             </Box>
 
-            <Typography variant="body2" color="black" sx={{ mt: 2, fontSize: { xs: "1rem", sm: "1rem" }, lineHeight: { xs: 1.4, sm: 1.6 }, textAlign: "justify", fontWeight: "500" }}>
+            <Typography variant="body2" color="black" sx={{ mt: 2, fontSize: { xs: "0.8rem", sm: "1rem" }, lineHeight: { xs: 1.4, sm: 1.6 }, textAlign: "justify", fontWeight: "500" }}>
               I completed MERN Stack (MongoDB, Express.js, React.js, Node.js) training at Seebiz Pvt. Limited, where I gained extensive experience in full-stack web development. The training lasted 6 months, divided into structured phases. The first 1.5 months focused on HTML, CSS, and JavaScript, covering DOM manipulation and responsive design using Bootstrap and MUI. The next 1 month was dedicated to Advanced JavaScript, exploring ES6+ features, asynchronous programming, and APIs. The final 3.5 months were centered on MERN Stack, where I built multiple applications, worked on RESTful APIs, and developed a live project. This hands-on experience enhanced my skills in backend and frontend integration, database management, and modern web development practices.
             </Typography>
           </Grid>

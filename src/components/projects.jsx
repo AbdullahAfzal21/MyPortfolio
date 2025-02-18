@@ -6,7 +6,7 @@ import SocialApp from "../../img/social app.jpg";
 import Livep from "../../img/livep.jpg";
 
 import Projectbg from "../../img/web-project.jpg";
-import { useLocation } from "react-router-dom";
+import {  useLocation } from "react-router-dom";
 import { useEffect } from "react";
 
 function Project() {
@@ -14,6 +14,7 @@ function Project() {
      useEffect(() => {
         window.scrollTo(0, 0); 
       }, []);
+
   return (
     <Box sx={{ display: "flex", flexDirection: "column", alignItems: "center", width: "100%",  marginTop:location.pathname === "/projects"? `60px`: "none"}}>
       {/* Background Section */}
@@ -80,7 +81,11 @@ function Project() {
       </CardContent>
       <CardActions>
         <Typography variant="body2" sx={{ color: "text.secondary" }}>Sep 2024 – Sep 2024</Typography>
-        <Button size="small">Learn More</Button>
+        <a href="https://speedo-routesystem.vercel.app/" style={{ textDecoration: 'none' }}>
+      <Button size="small">
+        Visit Site
+      </Button>
+    </a>
       </CardActions>
     </Card>
   </Grid>
@@ -103,7 +108,11 @@ function Project() {
       </CardContent>
       <CardActions>
         <Typography variant="body2" sx={{ color: "text.secondary" }}>Nov 2024 – Nov 2024</Typography>
-        <Button size="small">Learn More</Button>
+        <a href="https://github.com/AbdullahAfzal21/Social-App" style={{ textDecoration: 'none' }}>
+      <Button size="small">
+        Git Repository
+      </Button>
+    </a>
       </CardActions>
     </Card>
   </Grid>
@@ -124,7 +133,7 @@ function Project() {
       </CardContent>
       <CardActions>
         <Typography variant="body2" sx={{ color: "text.secondary" }}>Dec 2024 – Jan 2025</Typography>
-        <Button size="small">Learn More</Button>
+
       </CardActions>
     </Card>
   </Grid>

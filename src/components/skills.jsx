@@ -85,7 +85,7 @@ function Skills() {
                 <Grid item xs={6} sm={6} md={4} key={index} sx={{ display: "flex", alignItems: "center",mt: 2 }}>
                   <Box sx={{ display: "flex", alignItems: "center",marginLeft:{ xs: "21%", sm: "30%" },  }}>
                     <CheckCircleIcon sx={{ color: "#4CAF50", marginRight: 1 }} />
-                    <Typography variant="body1" sx={{ fontSize: { xs: "0.8rem", sm: "1.1rem", md: "1.3rem" } }}>{skill}</Typography>
+                    <Typography variant="body1" sx={{ fontSize: { xs: "0.75rem", sm: "1.1rem", md: "1.3rem" } }}>{skill}</Typography>
                   </Box>
                 </Grid>
               ))}
