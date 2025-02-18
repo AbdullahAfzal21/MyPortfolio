@@ -7,18 +7,21 @@ import Uni from "../../img/pu.png";
 import Clg from "../../img/punjab college logo.svg";
 import School from "../../img/mgs.png";
 import { useLocation } from 'react-router-dom';
+import { useEffect } from 'react';
 
 function Education() {
   const location = useLocation();
-
+   useEffect(() => {
+      window.scrollTo(0, 0); 
+    }, []);
   return (
-    <Box sx={{ marginBottom: "80px", textAlign: "center", marginTop: location.pathname === "/education" ? "70px" : "none" }}>
+    <Box sx={{ marginBottom: "80px", textAlign: "center", marginTop: location.pathname === "/education" ? "130px" : "none" }}>
       <Typography
         variant="h4"
         sx={{
           textShadow: "3px 3px 5px rgba(0,0,0,0.4)",
-          my: "70px",
-          fontSize: "40px",
+          my: "60px",
+          fontSize: { xs: "37px", sm: "38px", md: "40px" },
           fontWeight: "bold",
         }}
       >

@@ -2,6 +2,7 @@ import { Box, Typography, Grid } from "@mui/material";
 import CheckCircleIcon from "@mui/icons-material/CheckCircle";
 import Skillsbg from "../../img/Skills.jpg";
 import { useLocation } from "react-router-dom";
+import { useEffect } from "react";
 
 const skills = [
   "Node.js",
@@ -23,6 +24,9 @@ const skills = [
 
 function Skills() {
   const location = useLocation();
+     useEffect(() => {
+        window.scrollTo(0, 0); 
+      }, []);
   return (
     <div>
       <Box sx={{ display: "flex", flexDirection: "column", alignItems: "center", width: "100%", marginTop: location.pathname === "/skills" ? "70px" : "none" }}>
@@ -68,8 +72,8 @@ function Skills() {
               sx={{
                 textShadow: "3px 3px 5px rgba(0,0,0,0.4)",
                 textAlign: "center",
-                fontSize: "42px",
-                py: "70px",
+                fontSize: { xs: "37px", sm: "38px", md: "40px" },
+                py: "60px",
                 fontWeight: "bold",
               }}
             >

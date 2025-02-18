@@ -1,4 +1,5 @@
 import { CardContent, Typography, Grid, Box } from "@mui/material";
+import { useEffect } from "react";
 import { useLocation } from "react-router-dom";
 
 const CareerObjectives = () => {
@@ -13,7 +14,9 @@ const CareerObjectives = () => {
   ];
   
   const location = useLocation();
-
+   useEffect(() => {
+      window.scrollTo(0, 0); 
+    }, []);
   return (
     <Box
       sx={{
@@ -32,8 +35,8 @@ const CareerObjectives = () => {
         sx={{
           textShadow: "3px 3px 5px rgba(0,0,0,0.4)",
           textAlign: "center",
-          my: 4,
-          fontSize: "40px",
+          my: 5,
+          fontSize: { xs: "37px", sm: "38px", md: "40px" },
           fontWeight: "bold",
         }}
       >

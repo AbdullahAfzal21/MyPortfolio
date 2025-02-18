@@ -7,9 +7,13 @@ import Livep from "../../img/livep.jpg";
 
 import Projectbg from "../../img/web-project.jpg";
 import { useLocation } from "react-router-dom";
+import { useEffect } from "react";
 
 function Project() {
   const location = useLocation();
+     useEffect(() => {
+        window.scrollTo(0, 0); 
+      }, []);
   return (
     <Box sx={{ display: "flex", flexDirection: "column", alignItems: "center", width: "100%",  marginTop:location.pathname === "/projects"? `60px`: "none"}}>
       {/* Background Section */}
@@ -54,7 +58,7 @@ function Project() {
             sx={{
               textShadow: "3px 3px 5px rgba(0,0,0,0.4)",
               textAlign: "center",
-              fontSize: "42px",
+              fontSize: { xs: "37px", sm: "38px", md: "40px" },
               py: "70px",
               fontWeight: "bold",
             }}
