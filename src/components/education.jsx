@@ -35,7 +35,7 @@ function Education() {
           title: "University of Punjab",
           degree: "Bachelor of Business & Information Technology",
           year: "2021 – Present",
-          description: "Currently in the 8th semester, specializing in IT with a focus on software development and modern web technologies.",
+          description: "Currently in the 8th semester, specializing in IT with a strong focus on software development, modern web technologies, and innovative problem-solving."  ,
           borderColor: "#0093dd"
         },
         {
